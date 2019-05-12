@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace aig.FullSerializer.Internal {
+namespace helper.FullSerializer.Internal {
 
     /// <summary>
     /// Caches type name to type lookups. Type lookups occur in all loaded

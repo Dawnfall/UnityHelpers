@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Reflection;
 
-namespace aig.FullSerializer
+namespace helper.FullSerializer
 {
    
     /// <summary>

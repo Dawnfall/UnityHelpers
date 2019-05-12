@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace aig.FullSerializer
+namespace helper.FullSerializer
 {
     /// <summary>
     /// fsContext stores global metadata that can be used to customize how

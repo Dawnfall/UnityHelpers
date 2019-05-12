@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace aig.FullSerializer
+namespace helper.FullSerializer
 {
     /// <summary>
     /// The result of some sort of operation. A result is either successful or

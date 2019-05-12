@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace aig.FullSerializer.Internal {
+namespace helper.FullSerializer.Internal {
     /// <summary>
     /// Serializes and deserializes enums by their current name.
     /// </summary>

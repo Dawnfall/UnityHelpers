@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace aig.FullSerializer {
+namespace helper.FullSerializer {
     [CreateAssetMenu(menuName = "Full Serializer AOT Configuration")]
     public class fsAotConfiguration : ScriptableObject {
         public enum AotState {

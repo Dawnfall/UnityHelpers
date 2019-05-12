@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace aig.FullSerializer
+namespace helper.FullSerializer
 {
     /// <summary>
     /// The serialization converter allows for customization of the serialization

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace aig.FullSerializer.Internal {
+namespace helper.FullSerializer.Internal {
     public class fsPrimitiveConverter : fsConverter {
         public override bool CanProcess(Type type) {
             return

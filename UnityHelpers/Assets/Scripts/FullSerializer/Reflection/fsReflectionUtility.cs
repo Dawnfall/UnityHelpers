@@ -5,7 +5,7 @@
 using System.Reflection;
 #endif
 
-namespace aig.FullSerializer.Internal {
+namespace helper.FullSerializer.Internal {
     public static class fsReflectionUtility {
         /// <summary>
         /// Searches for a particular implementation of the given interface type

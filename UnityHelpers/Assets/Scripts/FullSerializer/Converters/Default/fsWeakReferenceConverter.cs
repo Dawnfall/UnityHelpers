@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace aig.FullSerializer.Internal {
+namespace helper.FullSerializer.Internal {
     /// <summary>
     /// Serializes and deserializes WeakReferences.
     /// </summary>

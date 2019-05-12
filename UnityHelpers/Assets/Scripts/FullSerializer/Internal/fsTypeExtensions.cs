@@ -9,7 +9,7 @@ using System.Reflection;
 using FullSerializer.Internal;
 #endif
 
-namespace aig.FullSerializer
+namespace helper.FullSerializer
 {
     public static class fsTypeExtensions {
         /// <summary>

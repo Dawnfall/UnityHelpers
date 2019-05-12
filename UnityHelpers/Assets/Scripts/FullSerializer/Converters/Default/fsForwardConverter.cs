@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace aig.FullSerializer
+namespace helper.FullSerializer
 {
     /// <summary>
     /// This allows you to forward serialization of an object to one of its
@@ -36,7 +36,7 @@ namespace aig.FullSerializer
     }
 }
 
-namespace aig.FullSerializer.Internal
+namespace helper.FullSerializer.Internal
 {
     public class fsForwardConverter : fsConverter
     {

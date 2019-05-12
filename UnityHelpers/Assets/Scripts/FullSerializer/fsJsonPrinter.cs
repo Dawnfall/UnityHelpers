@@ -3,7 +3,7 @@ using System.Globalization;
 using System.IO;
 using System.Text;
 
-namespace aig.FullSerializer
+namespace helper.FullSerializer
 {
     public static class fsJsonPrinter {
         /// <summary>

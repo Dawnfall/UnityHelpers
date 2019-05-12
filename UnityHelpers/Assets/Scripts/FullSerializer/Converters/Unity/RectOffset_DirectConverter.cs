@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace aig.FullSerializer
+namespace helper.FullSerializer
 {
     partial class fsConverterRegistrar
     {
@@ -10,7 +10,7 @@ namespace aig.FullSerializer
     }
 }
 
-namespace aig.FullSerializer.Internal.DirectConverters
+namespace helper.FullSerializer.Internal.DirectConverters
 {
     public class RectOffset_DirectConverter : fsDirectConverter<RectOffset>
     {

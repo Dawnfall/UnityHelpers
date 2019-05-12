@@ -1,6 +1,6 @@
-using aig.FullSerializer.Internal;
+using helper.FullSerializer.Internal;
 
-namespace aig.FullSerializer {
+namespace helper.FullSerializer {
     /// <summary>
     /// Version information stored on an AOT model. This is used to determine
     /// if the AOT model is up to date.

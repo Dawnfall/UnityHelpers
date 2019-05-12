@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace aig.FullSerializer
+namespace helper.FullSerializer
 {
     /// <summary>
     /// The given property or field annotated with [JsonIgnore] will not be

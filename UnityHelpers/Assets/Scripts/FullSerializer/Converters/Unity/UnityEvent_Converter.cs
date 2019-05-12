@@ -3,7 +3,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace aig.FullSerializer {
+namespace helper.FullSerializer {
     partial class fsConverterRegistrar {
         // Disable the converter for the time being. Unity's JsonUtility API
         // cannot be called from within a C# ISerializationCallbackReceiver
@@ -14,7 +14,7 @@ namespace aig.FullSerializer {
     }
 }
 
-namespace aig.FullSerializer.Internal.Converters {
+namespace helper.FullSerializer.Internal.Converters {
     // The standard FS reflection converter has started causing Unity to crash
     // when processing UnityEvent. We can send the serialization through
     // JsonUtility which appears to work correctly instead.

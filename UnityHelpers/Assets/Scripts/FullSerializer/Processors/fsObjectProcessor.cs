@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace aig.FullSerializer
+namespace helper.FullSerializer
 {
     /// <summary>
     /// <para>

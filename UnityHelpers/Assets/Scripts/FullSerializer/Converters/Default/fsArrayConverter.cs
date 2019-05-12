@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 
-namespace aig.FullSerializer.Internal
+namespace helper.FullSerializer.Internal
 {
     public class fsArrayConverter : fsConverter
     {

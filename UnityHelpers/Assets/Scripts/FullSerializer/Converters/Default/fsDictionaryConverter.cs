@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace aig.FullSerializer.Internal
+namespace helper.FullSerializer.Internal
 {
     // While the generic IEnumerable converter can handle dictionaries, we
     // process them separately here because we support a few more advanced

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using aig.FullSerializer.Internal;
+using helper.FullSerializer.Internal;
 
-namespace aig.FullSerializer
+namespace helper.FullSerializer
 {
     /// <summary>
     /// This class allows arbitrary code to easily register global converters. To

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Reflection;
 
-namespace aig.FullSerializer
+namespace helper.FullSerializer
 {
     // Global configuration options.
     public static class fsGlobalConfig

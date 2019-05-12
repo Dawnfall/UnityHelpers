@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using aig.FullSerializer.Internal;
+using helper.FullSerializer.Internal;
 
-namespace aig.FullSerializer
+namespace helper.FullSerializer
 {
     /// <summary>
     /// The serialization converter allows for customization of the serialization

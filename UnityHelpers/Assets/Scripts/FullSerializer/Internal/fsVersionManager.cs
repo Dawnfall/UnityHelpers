@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace aig.FullSerializer.Internal {
+namespace helper.FullSerializer.Internal {
     public static class fsVersionManager {
         private static readonly Dictionary<Type, fsOption<fsVersionedType>> _cache = new Dictionary<Type, fsOption<fsVersionedType>>();
 

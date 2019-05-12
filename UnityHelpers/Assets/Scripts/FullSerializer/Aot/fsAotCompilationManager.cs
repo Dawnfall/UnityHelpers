@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using aig.FullSerializer.Internal;
+using helper.FullSerializer.Internal;
 
-namespace aig.FullSerializer {
+namespace helper.FullSerializer {
     /// <summary>
     /// The AOT compilation manager
     /// </summary>

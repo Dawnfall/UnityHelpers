@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace aig.FullSerializer
+namespace helper.FullSerializer
 {
     /// <summary>
     /// Explicitly mark a property to be serialized. This can also be used to

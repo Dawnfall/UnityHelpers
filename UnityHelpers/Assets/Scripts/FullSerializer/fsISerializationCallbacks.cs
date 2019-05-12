@@ -6,7 +6,7 @@ using UnityEngine;
 using System.Reflection;
 #endif
 
-namespace aig.FullSerializer
+namespace helper.FullSerializer
 {
     /// <summary>
     /// Extend this interface on your type to receive notifications about
@@ -50,7 +50,7 @@ namespace aig.FullSerializer
     }
 }
 
-namespace aig.FullSerializer.Internal {
+namespace helper.FullSerializer.Internal {
     public class fsSerializationCallbackProcessor : fsObjectProcessor {
         public override bool CanProcess(Type type) {
             return typeof(fsISerializationCallbacks).IsAssignableFrom(type);

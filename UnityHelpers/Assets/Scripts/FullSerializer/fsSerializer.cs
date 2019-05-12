@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using aig.FullSerializer.Internal;
+using helper.FullSerializer.Internal;
 
 #if !UNITY_EDITOR && UNITY_WSA
 // For System.Reflection.TypeExtensions
 using System.Reflection;
 #endif
 
-namespace aig.FullSerializer
+namespace helper.FullSerializer
 {
     public class fsSerializer
     {

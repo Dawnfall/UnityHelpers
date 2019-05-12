@@ -6,7 +6,7 @@ using System.Collections;
 using System.Reflection;
 #endif
 
-namespace aig.FullSerializer.Internal
+namespace helper.FullSerializer.Internal
 {
     public class fsReflectedConverter : fsConverter
     {

@@ -4,7 +4,7 @@
 
 using System;
 
-namespace aig.FullSerializer
+namespace helper.FullSerializer
 {
     public sealed class fsMissingVersionConstructorException : Exception {
         public fsMissingVersionConstructorException(Type versionedType, Type constructorType) :

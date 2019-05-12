@@ -1,6 +1,6 @@
 using System;
 
-namespace aig.FullSerializer {
+namespace helper.FullSerializer {
     /// <summary>
     /// Interface that AOT generated converters extend. Used to check to see if
     /// the AOT converter is up to date.

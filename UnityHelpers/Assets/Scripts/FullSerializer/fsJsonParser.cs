@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 
-namespace aig.FullSerializer
+namespace helper.FullSerializer
 {
     // TODO: properly propagate warnings/etc for fsResult states
 

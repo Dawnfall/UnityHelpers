@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using aig.FullSerializer.Internal;
+using helper.FullSerializer.Internal;
 using UnityEditor;
 using UnityEngine;
 
-namespace aig.FullSerializer
+namespace helper.FullSerializer
 {
     [InitializeOnLoad]
     public static class PlayStateNotifier

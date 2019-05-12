@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
-using aig.FullSerializer.Internal;
+using helper.FullSerializer.Internal;
 
-namespace aig.FullSerializer
+namespace helper.FullSerializer
 {
     /// <summary>
     /// MetaType contains metadata about a type. This is used by the reflection

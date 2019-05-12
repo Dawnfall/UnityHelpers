@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace aig.FullSerializer.Internal
+namespace helper.FullSerializer.Internal
 {
     public class fsKeyValuePairConverter : fsConverter
     {

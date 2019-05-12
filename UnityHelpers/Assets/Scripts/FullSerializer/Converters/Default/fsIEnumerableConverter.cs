@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace aig.FullSerializer.Internal
+namespace helper.FullSerializer.Internal
 {
     /// <summary>
     /// Provides serialization support for anything which extends from

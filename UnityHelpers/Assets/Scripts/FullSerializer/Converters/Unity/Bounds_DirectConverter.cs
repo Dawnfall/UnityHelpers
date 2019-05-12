@@ -2,13 +2,13 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace aig.FullSerializer {
+namespace helper.FullSerializer {
     partial class fsConverterRegistrar {
         public static Internal.DirectConverters.Bounds_DirectConverter Register_Bounds_DirectConverter;
     }
 }
 
-namespace aig.FullSerializer.Internal.DirectConverters {
+namespace helper.FullSerializer.Internal.DirectConverters {
     public class Bounds_DirectConverter : fsDirectConverter<Bounds> {
         protected override fsResult DoSerialize(Bounds model, Dictionary<string, fsData> serialized, object other) {
             var result = fsResult.Success;

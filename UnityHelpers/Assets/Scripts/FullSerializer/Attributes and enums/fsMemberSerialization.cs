@@ -1,4 +1,4 @@
-﻿namespace aig.FullSerializer
+﻿namespace helper.FullSerializer
 {
     /// <summary>
     /// Controls how the reflected converter handles member serialization.

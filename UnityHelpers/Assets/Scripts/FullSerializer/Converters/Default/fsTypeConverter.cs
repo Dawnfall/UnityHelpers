@@ -5,7 +5,7 @@
 using System.Reflection;
 #endif
 
-namespace aig.FullSerializer.Internal {
+namespace helper.FullSerializer.Internal {
     public class fsTypeConverter : fsConverter {
         public override bool CanProcess(Type type) {
             return typeof(Type).IsAssignableFrom(type);

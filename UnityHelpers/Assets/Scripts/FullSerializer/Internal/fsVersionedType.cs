@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace aig.FullSerializer.Internal {
+namespace helper.FullSerializer.Internal {
     public struct fsVersionedType {
         /// <summary>
         /// The direct ancestors that this type can import.

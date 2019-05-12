@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 
-namespace aig.FullSerializer.Internal {
+namespace helper.FullSerializer.Internal {
     /// <summary>
     /// Supports serialization for DateTime, DateTimeOffset, and TimeSpan.
     /// </summary>

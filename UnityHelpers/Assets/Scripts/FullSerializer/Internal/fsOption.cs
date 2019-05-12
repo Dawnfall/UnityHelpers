@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace aig.FullSerializer.Internal {
+namespace helper.FullSerializer.Internal {
     /// <summary>
     /// Simple option type. This is akin to nullable types.
     /// </summary>
