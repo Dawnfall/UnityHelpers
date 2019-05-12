@@ -23,19 +23,32 @@ namespace helper
 
             return types;
         }
-        public static List<Type> getAllSubTypesInAssemblies(Type baseType, bool doIncludeAbstract)
+        public static List<Type> getAllInheritedTypesInAssemblies(Type[] subTypes, bool doIncludeAbstract) //TODO: this is changed... update helper project
         {
             List<Type> allSubTypes = new List<Type>();
             foreach (Assembly a in getAllAssemblies())
             {
                 foreach (Type t in a.GetTypes())
-                    if ((doIncludeAbstract || (!doIncludeAbstract && !t.IsAbstract)) && baseType.IsAssignableFrom(t))
+                {
+                    if ((doIncludeAbstract || (!doIncludeAbstract && !t.IsAbstract)) && IsTypeInheritingFromSubTypes(subTypes, t))
+                    {
                         allSubTypes.Add(t);
+                    }
+                }
             }
             return allSubTypes;
 
         }
 
+        public static bool IsTypeInheritingFromSubTypes(Type[] subTypes, Type inheritedType) //TODO: this is new, update helper project
+        {
+            foreach (Type subType in subTypes)
+            {
+                if (!subType.IsAssignableFrom(inheritedType))
+                    return false;
+            }
+            return true;
+        }
         public static bool findResultsForFirstIncludedSubtype<T>(Dictionary<Type, T> dict, Type searchType, out T result)
         {
             result = default(T);
