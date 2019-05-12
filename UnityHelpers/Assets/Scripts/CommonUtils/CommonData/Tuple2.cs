@@ -1,6 +1,6 @@
 using System;
 
-namespace aim
+namespace helper
 {
     /// <summary>
     /// Represents a functional tuple that can be used to store

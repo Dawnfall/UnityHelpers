@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Reflection;
 
+namespace helper
+{
 public class ReflectedMember
 {
     private MemberInfo m_member;
@@ -145,4 +147,5 @@ public class ReflectedMember
         get;
         private set;
     }
+}
 }
