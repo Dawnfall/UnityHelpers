@@ -6,7 +6,7 @@ using System.Reflection;
 
 namespace helper
 {
-    public static class ReflectionHelper
+    public static class HelperReflection
     {
         public static Assembly[] getAllAssemblies()
         {
@@ -30,7 +30,7 @@ namespace helper
             {
                 foreach (Type t in a.GetTypes())
                 {
-                    if ((doIncludeAbstract || (!doIncludeAbstract && !t.IsAbstract)) && IsTypeInheritingFromSubTypes(subTypes, t))
+                    if ((doIncludeAbstract || (!doIncludeAbstract && !t.IsAbstract)) && isTypeInheritingFromSubTypes(subTypes, t))
                     {
                         allSubTypes.Add(t);
                     }
@@ -40,7 +40,7 @@ namespace helper
 
         }
 
-        public static bool IsTypeInheritingFromSubTypes(Type[] subTypes, Type inheritedType) //TODO: this is new, update helper project
+        public static bool isTypeInheritingFromSubTypes(Type[] subTypes, Type inheritedType) //TODO: this is new, update helper project
         {
             foreach (Type subType in subTypes)
             {

@@ -27,6 +27,17 @@ namespace helper
             else
                 dict[key] = valueToAdd;
         }
+        public static bool AddIfType<T>(object obj, List<T> list) where T : class
+        {
+            T castObj = obj as T;
+            if (castObj != null)
+            {
+                list.Add(castObj);
+                return true;
+            }
+            return false;
+        }
+
         public static bool isInArray<T>(IEnumerable<T> arrStr, T item)
         {
             if (arrStr == null)
