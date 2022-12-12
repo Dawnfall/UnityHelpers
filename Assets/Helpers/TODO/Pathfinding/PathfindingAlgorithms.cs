@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using Dawnfall;
+using Dawnfall.Helper.Pathfinding;
+using Dawnfall.Helper;
 
 namespace Dawnfall.Helper.Pathfinding
 {
@@ -417,3 +419,355 @@ namespace Dawnfall.Helper.Pathfinding
         }
     }
 }
+
+
+// just for refference meant to be deleted!
+
+//namespace pathfinding
+//{
+//    public static class GridPathfindingAlgorithms
+//    {
+//        public class GridPathNode
+//        {
+//            public Vector2Int Item { get; set; }
+//            public GridPathNode FromNode { get; set; }
+//        }
+
+//        public class GridDijkstraNode : GridPathNode, IComparable<GridDijkstraNode>, IHeapable
+//        {
+//            public int HeapIndex { get; set; }
+//            public float Gcost { get; set; }
+//            public int CompareTo(GridDijkstraNode other)
+//            {
+//                return -Gcost.CompareTo(other.Gcost);
+//            }
+//        }
+
+//        public class GridGreedyNode : GridPathNode, IComparable<GridGreedyNode>, IHeapable
+//        {
+//            public int HeapIndex { get; set; }
+//            public float Hcost { get; set; }
+//            public int CompareTo(GridGreedyNode other)
+//            {
+//                return -Hcost.CompareTo(other.Hcost);
+//            }
+//        }
+
+//        public class GridAStarNode : GridPathNode, IComparable<GridAStarNode>, IHeapable
+//        {
+//            public int HeapIndex { get; set; }
+//            public float Gcost { get; set; }
+//            public float Hcost { get; set; }
+//            public float Fcost { get { return Gcost + Hcost; } }
+
+//            public int CompareTo(GridAStarNode other)
+//            {
+//                int compare = Fcost.CompareTo(other.Fcost);
+//                if (compare == 0)
+//                    compare = Gcost.CompareTo(other.Gcost);
+//                return -compare;
+//            }
+//        }
+
+//        //**********************
+//        // BREADTH FIRST SEARCH
+//        //**********************
+//        // - guaranties shortest path
+//        // - assumes all edges are of equal cost(uniform heuristic)
+//        // - best for 1:n or n:1
+
+//        public static List<Vector2Int> BreadthFirstSearch(Vector2Int start, Vector2Int end, PathfindGrid grid)
+//        {
+//            Queue<GridPathNode> openSet = new Queue<GridPathNode>();
+//            HashSet<Vector2Int> visitedNodes = new HashSet<Vector2Int>();
+
+//            GridPathNode startBreadthNode = new GridPathNode { Item = start, FromNode = null };
+//            visitedNodes.Add(start);
+//            openSet.Enqueue(startBreadthNode);
+
+//            GridPathNode currentBreadthNode = null;
+//            while (openSet.Count > 0)
+//            {
+//                currentBreadthNode = openSet.Dequeue();
+
+//                if (currentBreadthNode.Item.Equals(end))
+//                    break;
+
+//                foreach (Vector2Int neighbour in grid.Get8Neighbours(currentBreadthNode.Item))
+//                {
+//                    if (!grid.IsWalkable(neighbour))
+//                        continue;
+
+//                    if (!visitedNodes.Contains(neighbour))
+//                    {
+//                        GridPathNode neighbourBreathNode = new GridPathNode { Item = neighbour, FromNode = currentBreadthNode };
+//                        visitedNodes.Add(neighbour);
+//                        openSet.Enqueue(neighbourBreathNode);
+//                    }
+//                }
+//            }
+//            if (currentBreadthNode == null || currentBreadthNode.Item != end)
+//                return null;
+
+//            return Retrace(currentBreadthNode, start);
+//        }
+
+//        //***************************
+//        // GREEDY FIRST SEARCH
+//        //***************************
+//        // - does NOT guarantee shortest path
+//        // - generally very fast
+//        // - works for 1:1 
+//        public static List<Vector2Int> GreedyFirst(Vector2Int start, Vector2Int end, PathfindGrid grid) //needs a bit of checking
+//        {
+//            Heap<GridGreedyNode> openSet = new Heap<GridGreedyNode>(grid.NodeCount);
+//            Dictionary<Vector2Int, GridGreedyNode> allNodesDict = new Dictionary<Vector2Int, GridGreedyNode>();
+
+//            GridGreedyNode newGreedyNode = new GridGreedyNode { Item = start, FromNode = null, Hcost = grid.GetDistance(start, end) };
+//            openSet.Add(newGreedyNode);
+//            allNodesDict[start] = newGreedyNode;
+
+//            //until there are no more unchecked nodes...
+//            GridGreedyNode currGreedyNode = null;
+//            while (openSet.Count > 0)
+//            {
+
+//                currGreedyNode = openSet.Extract();
+
+//                //if we reached end node we are done
+//                if (currGreedyNode.Item.Equals(end))
+//                    break;
+
+//                //we check all its neighbours
+//                foreach (Vector2Int neighbour in grid.Get8Neighbours(currGreedyNode.Item))
+//                {
+//                    if (!grid.IsWalkable(neighbour))
+//                        continue;
+
+//                    GridGreedyNode neighbourGreedyNode;
+//                    if (!allNodesDict.TryGetValue(neighbour, out neighbourGreedyNode))
+//                    {
+//                        neighbourGreedyNode = new GridGreedyNode { Item = neighbour, FromNode = currGreedyNode, Hcost = grid.GetDistance(neighbour, end) };
+//                        openSet.Add(neighbourGreedyNode);
+//                        allNodesDict.Add(neighbour, neighbourGreedyNode);
+//                    }
+//                }
+//                currGreedyNode.HeapIndex = -2;
+//            }
+//            if (currGreedyNode == null || currGreedyNode.Item != end)
+//                return null;
+
+//            return Retrace(currGreedyNode, start);
+//        }
+
+//        public static List<Vector2Int> Dijkstra(Vector2Int start, Vector2Int end, PathfindGrid grid)
+//        {
+//            Heap<GridDijkstraNode> openSet = new Heap<GridDijkstraNode>(grid.NodeCount);
+//            Dictionary<Vector2Int, GridDijkstraNode> allNodeDict = new Dictionary<Vector2Int, GridDijkstraNode>();
+
+//            GridDijkstraNode newDijkstraNode = new GridDijkstraNode { Item = start, FromNode = null, Gcost = 0 };
+//            openSet.Add(newDijkstraNode);
+//            allNodeDict[start] = newDijkstraNode;
+
+//            GridDijkstraNode currDijkstra = null;
+//            //until there are no more unchecked nodes...
+//            while (openSet.Count > 0)
+//            {
+//                //we take best (Fcost or if equal Hcost) node on the heap
+//                currDijkstra = openSet.Extract();
+
+//                //if we reached end node we are done
+//                if (currDijkstra.Item.Equals(end))
+//                    break;
+
+//                //we check all its neighbours
+//                foreach (Vector2Int neighbour in grid.Get8Neighbours(currDijkstra.Item))
+//                {
+//                    if (!grid.IsWalkable(neighbour))
+//                        continue;
+
+//                    float newCostToNeighbour = currDijkstra.Gcost + grid.GetDistance(currDijkstra.Item, neighbour);
+
+//                    GridDijkstraNode neighbourDijkstra;
+//                    if (allNodeDict.TryGetValue(neighbour, out neighbourDijkstra))
+//                    {
+//                        if (neighbourDijkstra.HeapIndex > 0 && neighbourDijkstra.Gcost > newCostToNeighbour) //is on the openSet
+//                        {
+//                            neighbourDijkstra.FromNode = currDijkstra;
+//                            neighbourDijkstra.Gcost = newCostToNeighbour;
+//                            openSet.Update(neighbourDijkstra);
+//                        }
+//                    }
+//                    else
+//                    {
+//                        neighbourDijkstra = new GridDijkstraNode { Item = neighbour, FromNode = currDijkstra, Gcost = newCostToNeighbour };
+//                        allNodeDict[neighbour] = neighbourDijkstra;
+//                        openSet.Add(neighbourDijkstra);
+//                    }
+//                }
+//                currDijkstra.HeapIndex = -2; //closed set
+//            }
+
+//            if (currDijkstra == null || currDijkstra.Item != end)
+//                return null;
+
+//            return Retrace(currDijkstra, start);
+//        }
+
+//        public static List<Vector2Int> Astar(Vector2Int start, Vector2Int end, PathfindGrid grid)
+//        {
+//            Heap<GridAStarNode> openSet = new Heap<GridAStarNode>(grid.NodeCount);
+//            Dictionary<Vector2Int, GridAStarNode> allNodeDict = new Dictionary<Vector2Int, GridAStarNode>();
+
+//            GridAStarNode newAstarNode = new GridAStarNode { Item = start, FromNode = null, Gcost = 0, Hcost = grid.GetDistance(start, end) };
+//            openSet.Add(newAstarNode);
+//            allNodeDict.Add(start, newAstarNode);
+
+//            GridAStarNode currAstarNode = null;
+//            while (openSet.Count > 0)
+//            {
+//                currAstarNode = openSet.Extract();
+//                if (currAstarNode.Item.Equals(end))
+//                    break;
+
+//                //we check all its neighbours
+//                foreach (Vector2Int neighbour in grid.Get8Neighbours(currAstarNode.Item))
+//                {
+//                    if (!grid.IsWalkable(neighbour))
+//                        continue;
+
+//                    float newCostToNeighbour = currAstarNode.Gcost + grid.GetDistance(currAstarNode.Item, neighbour);
+
+//                    GridAStarNode neighbourAstar;
+//                    if (allNodeDict.TryGetValue(neighbour, out neighbourAstar))
+//                    {
+//                        if (neighbourAstar.HeapIndex > 0 && neighbourAstar.Gcost > newCostToNeighbour)
+//                        {
+//                            neighbourAstar.FromNode = currAstarNode;
+//                            neighbourAstar.Gcost = newCostToNeighbour;
+//                            openSet.Update(neighbourAstar);
+//                        }
+//                    }
+//                    else
+//                    {
+//                        neighbourAstar = new GridAStarNode { Item = neighbour, FromNode = currAstarNode, Gcost = newCostToNeighbour, Hcost = grid.GetDistance(neighbour, end) };
+//                        allNodeDict.Add(neighbour, neighbourAstar);
+//                        openSet.Add(neighbourAstar);
+//                    }
+
+//                }
+//                currAstarNode.HeapIndex = -2;
+//            }
+//            if (currAstarNode == null || currAstarNode.Item != end)
+//                return null;
+
+//            List<Vector2Int> path = Retrace(currAstarNode, start);
+//            path = SmoothPath(path, grid);
+//            return path;
+//        }
+
+//        private static List<Vector2Int> Retrace(GridPathNode endNode, Vector2Int start) //can be optimized
+//        {
+//            List<Vector2Int> path = new List<Vector2Int>();
+//            GridPathNode Node_2 = null;
+//            GridPathNode Node_1 = null;
+//            while (endNode.Item != start)
+//            {
+//                if (Node_2 == null || Node_1 == null)
+//                    path.Add(endNode.Item);
+//                else
+//                {
+//                    Vector2Int prevDir = new Vector2Int(Node_1.Item.x - Node_2.Item.x, Node_1.Item.y - Node_2.Item.y);
+//                    Vector2Int currDir = new Vector2Int(endNode.Item.x - Node_1.Item.x, endNode.Item.y - Node_1.Item.y);
+//                    if (prevDir == currDir)
+//                        path[path.Count - 1] = endNode.Item;
+//                    else
+//                        path.Add(endNode.Item);
+//                }
+//                Node_2 = Node_1;
+//                Node_1 = endNode;
+//                endNode = endNode.FromNode;
+//            }
+
+//            return path;
+//        }
+
+//        private static List<Vector2Int> SmoothPath(List<Vector2Int> path, PathfindGrid grid)
+//        {
+//            List<Vector2Int> resultPath = new List<Vector2Int>();
+
+//            resultPath.Add(path[0]);
+//            int startIndex = 0;
+//            while (startIndex < path.Count - 1)
+//            {
+//                int endIndex = startIndex + 2;
+//                while (endIndex < path.Count)
+//                {
+//                    Vector2Int start = path[startIndex];
+//                    Vector2Int end = path[endIndex];
+
+//                    if (!IsValidPath(start, end, grid))
+//                        break;
+//                    endIndex++;
+//                }
+//                resultPath.Add(path[endIndex - 1]);
+//                startIndex = endIndex - 1;
+//            }
+
+//            return resultPath;
+//        }
+
+//        private static bool IsValidPath(Vector2Int start, Vector2Int end, PathfindGrid grid)
+//        {
+//            try
+//            {
+//                Vector2 line = new Vector2(end.x - start.x, end.y - start.y);
+//                if (line.x == 0 || line.y == 0)
+//                    return true;
+
+//                float magnitude = line.magnitude;
+//                //Debug.Log("magnitude: " + magnitude);
+//                Vector2 dir = line.normalized;
+
+//                float borderX = (dir.x < 0) ? 0f : 1f;
+//                float borderY = (dir.y < 0) ? 0f : 1f;
+
+//                float t = 0f;
+//                Vector2 currPos = new Vector2(start.x + 0.5f, start.y + 0.5f);
+//                Vector2Int nextCoords = start;
+//                while (t < magnitude)
+//                {
+//                    if (!grid.IsWalkable(nextCoords))
+//                    {
+//                        Debug.Log("false");
+//                        return false;
+//                    }
+
+//                    float tX = (borderX - (currPos.x - nextCoords.x)) / dir.x;
+//                    float tY = (borderY - (currPos.x - nextCoords.y)) / dir.y;
+
+//                    if (tX < tY)
+//                    {
+//                        nextCoords.x += (dir.x > 0) ? 1 : -1;
+//                    }
+//                    else
+//                    {
+//                        nextCoords.y += (dir.y > 0) ? 1 : -1;
+//                    }
+//                    t += Mathf.Min(tX, tY);
+//                    currPos += dir * t;
+
+//                    //Debug.Log("currX: " + currX + " ; currY: " + currY + " ; coordX: " + currentCoords.x + " ; coordY: " + currentCoords.y + " , t: " + t);
+//                }
+
+//                Debug.Log("true");
+//                return true;
+//            }
+//            catch (Exception e)
+//            {
+//                Debug.Log("error");
+//                return false;
+//            }
+//        }
+//    }
+//}

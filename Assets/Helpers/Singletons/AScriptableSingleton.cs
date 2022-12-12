@@ -11,7 +11,7 @@ namespace Dawnfall.Helper
             {
                 if (m_instance == null)
                 {
-                    var allInst = Resources.FindObjectsOfTypeAll<T>();
+                    var allInst = Resources.FindObjectsOfTypeAll<T>();  //TODO: more general, Resources?!?
                     if (allInst.Length > 0)
                         m_instance = allInst[0];
                     if (m_instance == null)

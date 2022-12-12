@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using log4net.Util;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -124,4 +125,31 @@ namespace Dawnfall.Helper.Pathfinding
 //public void UpdateGrid()
 //{
 //    //TODO: some smart way of updating only part of grid
+//}
+
+
+//public void Create(Vector3 areaSize, float nodeRadius, float aditionalBorder, LayerMask unwalkableMask)
+//{
+//    WorldBottomLeft = transform.position - areaSize / 2f;
+//    PhysicsRadius = nodeRadius + aditionalBorder;
+//    NodeEdgeSize = nodeRadius;
+//    UnWalkableMask = unwalkableMask;
+
+//    Size = new Vector2Int(
+//        (int)(areaSize.x / NodeEdgeSize),
+//        (int)(areaSize.z / NodeEdgeSize)
+//        );
+
+//    Data = new int[NodeCount];
+
+//    for (int x = 0; x < Size.x; x++)
+//        for (int y = 0; y < Size.y; y++)
+//        {
+//            Vector2Int coords = new Vector2Int(x, y);
+
+//            if (Physics.CheckSphere(CoordsToWorld(coords), PhysicsRadius, UnWalkableMask))
+//                Data[coords.x * Size.y + coords.y] = 0;
+//            else
+//                Data[coords.x * Size.y + coords.y] = 1;
+//        }
 //}
