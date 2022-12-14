@@ -30,7 +30,7 @@ namespace Dawnfall.Helper
             {
                 foreach (Type t in a.GetTypes())
                 {
-                    if ((doIncludeAbstract || (!doIncludeAbstract && !t.IsAbstract)) && isTypeInheritingFromSubTypes(subTypes, t))
+                    if ((doIncludeAbstract || (!doIncludeAbstract && !t.IsAbstract)) && IsTypeInheritingFromSubTypes(subTypes, t))
                     {
                         allSubTypes.Add(t);
                     }
@@ -40,7 +40,7 @@ namespace Dawnfall.Helper
 
         }
 
-        public static bool isTypeInheritingFromSubTypes(Type[] subTypes, Type inheritedType)
+        public static bool IsTypeInheritingFromSubTypes(Type[] subTypes, Type inheritedType)
         {
             foreach (Type subType in subTypes)
             {
@@ -49,7 +49,7 @@ namespace Dawnfall.Helper
             }
             return true;
         }
-        public static bool findResultsForFirstIncludedSubtype<T>(Dictionary<Type, T> dict, Type searchType, out T result)
+        public static bool FindResultsForFirstIncludedSubtype<T>(Dictionary<Type, T> dict, Type searchType, out T result)
         {
             result = default(T);
 
@@ -62,16 +62,16 @@ namespace Dawnfall.Helper
             }
             return false;
         }
-        public static bool isAssignableToGenericType(Type fromType, Type toType)
+        public static bool IsAssignableToGenericType(Type fromType, Type toType)
         {
             if (fromType == null)
                 return false;
             if (fromType.IsGenericType && fromType.GetGenericTypeDefinition() == toType)
                 return true;
             fromType = fromType.BaseType;
-            return isAssignableToGenericType(fromType, toType);
+            return IsAssignableToGenericType(fromType, toType);
         }
-        public static Type[] genericSubclassArgumentTypes(Type genericSubclassDefinition, Type toCheck)
+        public static Type[] GenericSubclassArgumentTypes(Type genericSubclassDefinition, Type toCheck)
         {
             while (toCheck != null)
             {
@@ -93,7 +93,7 @@ namespace Dawnfall.Helper
             return attributes[0] as T;
         }
 
-        public static List<System.Type> selectAllOfGivenType(List<System.Type> allTypes, System.Type classType)
+        public static List<System.Type> SelectAllOfGivenType(List<System.Type> allTypes, System.Type classType)
         {
             List<System.Type> selectedTypes = new List<System.Type>();
             foreach (var t in allTypes)

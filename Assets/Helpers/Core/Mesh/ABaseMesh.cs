@@ -6,6 +6,7 @@ namespace Dawnfall.Helper
 {
     public abstract class ABaseMesh : MonoBehaviour
     {
+        //TODO change this
         public bool m_useCollider;
         public bool m_doVertexColors;
         public bool m_doUV;
@@ -68,9 +69,9 @@ namespace Dawnfall.Helper
         {
             int vertexIndex = m_vertices.Count;
 
-            m_vertices.Add(HelperUnity.PerturbHor(a.m_position, noiseTexture, noiseScale, strength));
-            m_vertices.Add(HelperUnity.PerturbHor(b.m_position, noiseTexture, noiseScale, strength));
-            m_vertices.Add(HelperUnity.PerturbHor(c.m_position, noiseTexture, noiseScale, strength));
+            m_vertices.Add(HelperMath.PerturbHor(a.m_position, noiseTexture, noiseScale, strength));
+            m_vertices.Add(HelperMath.PerturbHor(b.m_position, noiseTexture, noiseScale, strength));
+            m_vertices.Add(HelperMath.PerturbHor(c.m_position, noiseTexture, noiseScale, strength));
 
             m_indices.Add(vertexIndex);
             m_indices.Add(vertexIndex + 1);
@@ -160,9 +161,6 @@ namespace Dawnfall.Helper
                 AddQuad(edge0[i], edge1[i], edge1[i + 1], edge0[i + 1], noiseTexture, noiseScale, strength, texArrayIndices);
             }
         }
-
-
-
     }
 }
 

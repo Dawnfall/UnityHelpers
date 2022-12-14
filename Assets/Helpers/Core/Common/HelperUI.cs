@@ -6,23 +6,23 @@ namespace Dawnfall.Helper
 {
     public static class HelperUI
     {
-        public static void addMethodToButton(string buttonName, UnityAction action)
+        public static void AddMethodToButton(string buttonName, UnityAction action)
         {
-            Button button = HelperUnity.findComponentOnGameObject<Button>(buttonName);
+            Button button = HelperUnity.FindComponentOnGameObject<Button>(buttonName);
 
             if (button != null)
                 button.onClick.AddListener(action);
         }
 
-        public static void addMethodToButton(string buttonName, GameObject parent, UnityAction action)
+        public static void AddMethodToButton(string buttonName, GameObject parent, UnityAction action)
         {
-            Button button = HelperUnity.findComponentOnChild<Button>(buttonName, parent);
+            Button button = HelperUnity.FindComponentOnChild<Button>(buttonName, parent);
 
             if (button != null)
                 button.onClick.AddListener(action);
         }
 
-        public static void setCanvasGroup(CanvasGroup canvasGroup, float alpha, bool isInteractable, bool doBlockRaycasts, bool doIgnoreParentGroups)
+        public static void SetCanvasGroup(CanvasGroup canvasGroup, float alpha, bool isInteractable, bool doBlockRaycasts, bool doIgnoreParentGroups)
         {
             canvasGroup.alpha = alpha;
             canvasGroup.interactable = isInteractable;

@@ -15,7 +15,7 @@ namespace Dawnfall.Helper
             array[i2] = temp1;
         }
 
-        public static T[] reverseArray<T>(T[] arr)
+        public static T[] ReverseArray<T>(T[] arr)
         {
             T[] reversedArr = new T[arr.Length];
             for (int i = 0; i < arr.Length; i++)
@@ -23,7 +23,7 @@ namespace Dawnfall.Helper
             return reversedArr;
         }
 
-        public static T[] subArray<T>(T[] arr, int startIndex, int length)
+        public static T[] SubArray<T>(T[] arr, int startIndex, int length)
         {
             T[] subArr = new T[length];
             for (int i = 0; i < length; i++)
@@ -31,7 +31,7 @@ namespace Dawnfall.Helper
             return subArr;
         }
 
-        public static bool isInArray<T>(IEnumerable<T> arrStr, T item)
+        public static bool IsInArray<T>(IEnumerable<T> arrStr, T item)
         {
             if (arrStr == null)
                 return false;
@@ -39,28 +39,6 @@ namespace Dawnfall.Helper
                 if (str.Equals(item))
                     return true;
             return false;
-        }
-
-        //list must not be empty
-        public static Vector3 GetClosestPoint(IList<Vector3> list, Vector3 point)
-        {
-            if (list == null || list.Count == 0)
-                throw new System.Exception("list empty!");
-
-            float minDistSqr = Mathf.Infinity;
-            Vector3 closest = new Vector3();
-
-            foreach (var item in list)
-            {
-                float newDistSqr = (point - item).sqrMagnitude;
-                if (newDistSqr < minDistSqr)
-                {
-                    minDistSqr = newDistSqr;
-                    closest = item;
-                }
-            }
-
-            return closest;
         }
 
         public static bool AddIfType<T>(object obj, List<T> list) where T : class
@@ -73,8 +51,6 @@ namespace Dawnfall.Helper
             }
             return false;
         }
-
-
 
         //not necceserily correct
         public static byte[] ObjectToByteArray(object obj)

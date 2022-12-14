@@ -6,7 +6,7 @@ namespace Dawnfall.Helper
 {
     public static class HelperUnity
     {
-        public static GameObject findGameObject(string name)
+        public static GameObject FindGameObject(string name)
         {
             GameObject go = GameObject.Find(name);
 
@@ -16,7 +16,7 @@ namespace Dawnfall.Helper
             return GameObject.Find("name");
         }
 
-        public static GameObject findChildGO(string childName, GameObject parent)
+        public static GameObject FindChildGO(string childName, GameObject parent)
         {
             if (parent == null)
             {
@@ -34,27 +34,27 @@ namespace Dawnfall.Helper
         }
 
         //also includes inactive
-        public static T findComponentOnChildren<T>(Transform parent) where T : Component
+        public static T FindComponentOnChildren<T>(Transform parent) where T : Component
         {
             T comp = parent.GetComponent<T>();
             if (comp != null)
                 return comp;
 
             foreach (Transform child in parent)
-                return findComponentOnChildren<T>(child);
+                return FindComponentOnChildren<T>(child);
 
             return null;
         }
-        public static T findComponentOnChild<T>(string childName, GameObject parent) where T : Component
+        public static T FindComponentOnChild<T>(string childName, GameObject parent) where T : Component
         {
-            GameObject childGO = findChildGO(childName, parent);
+            GameObject childGO = FindChildGO(childName, parent);
 
             if (childGO != null)
                 return childGO.GetComponent<T>();
             return null;
         }
 
-        public static T findComponentOnGameObject<T>(string goName) where T : Component
+        public static T FindComponentOnGameObject<T>(string goName) where T : Component
         {
             GameObject go = GameObject.Find(goName);
             if (go != null)
@@ -237,7 +237,7 @@ namespace Dawnfall.Helper
             target.transform.localScale = newScale;
         }
 
-        public static void printCollection<T>(IEnumerable<T> enumerable)
+        public static void PrintCollection<T>(IEnumerable<T> enumerable)
         {
             foreach (var a in enumerable)
             {
@@ -276,14 +276,6 @@ namespace Dawnfall.Helper
             return newTexture;
         }
 
-        //TODO: put this out
-        public static Vector3 PerturbHor(Vector3 position, Texture2D perturbTexture, float noiseScale, float strength)
-        {
-            Vector4 noise = perturbTexture.GetPixelBilinear(position.x * noiseScale, position.z * noiseScale);
-            position.x += (noise.x * 2f - 1) * strength;
-            position.z += (noise.z * 2f - 1) * strength;
-            return position;
-        }
 
     }
 }
